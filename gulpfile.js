@@ -1,11 +1,13 @@
 var gulp = require('gulp');
 var server = require('gulp-webserver');
+var scss  = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var url = require('url');
 var path = require('path');
 var fs = require('fs');
 
 // 起服务器
-gulp.task('server',function(){
+gulp.task('server',['devCss'],function(){
     gulp.src('src')
         .pipe(server({
             port:8999,
@@ -19,3 +21,18 @@ gulp.task('server',function(){
             }
         }))
 })
+// 开发环境 编译scss
+gulp.task('devCss',function(){
+    return gulp.src('./src/scss/*.scss')
+        .pipe(scss())
+        .pipe(autoprefixer({
+            browsers:['last 2 versions','Android >= 4.0']
+        }))
+        .pipe(gulp.dest('./src/css')) // 转移到css中
+})
+// 监听
+gulp.task('watch',function(){
+    gulp.watch('./src/scss/*.scss',['devCss'])
+})
+
+gulp.task('dev',['server','watch'])
