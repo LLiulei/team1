@@ -5,6 +5,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var url = require('url');
 var path = require('path');
 var fs = require('fs');
+var data = require('./mock/data.json');
 
 // 起服务器
 gulp.task('server',['devCss'],function(){
@@ -16,8 +17,16 @@ gulp.task('server',['devCss'],function(){
                 if(pathname === '/favicon.ico'){
                     return false;
                 }
-                pathname = pathname === '/' ? '/index.html' : pathname;
-                res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
+                if(pathname === '/api/classify'){
+                    var key = url.parse(req.url,true).query.key;
+                    var target = data.data.filter(function(item){
+                        return item.title === key;
+                    });
+                    res.end(JSON.stringify({code:1,data:target}));
+                }else{
+                    pathname = pathname === '/' ? '/index.html' : pathname;
+                    res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
+                }
             }
         }))
 })
