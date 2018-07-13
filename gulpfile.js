@@ -6,7 +6,7 @@ var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var data = require('./mock/data.json');
-
+var navList = require('./mock/nav.json');
 // 起服务器
 gulp.task('server',['devCss'],function(){
     gulp.src('src')
@@ -17,15 +17,14 @@ gulp.task('server',['devCss'],function(){
                 if(pathname === '/favicon.ico'){
                     return false;
                 }
-                if(pathname === '/api/data'){
+                if(pathname === '/api/classify'){
+                    var key = url.parse(req.url,true).query.key;
                     var target = data.data.filter(function(item){
                         return item.title === key;
-                    });
-                    res.end(JSON.stringify(target));
-                }else if(pathname === '/api/list'){
-                    var target = data.filter(function(item){
-                        return MediaQueryList.id === item.choose;
                     })
+                    res.end(JSON.stringify({code:1,data:target}));
+                }else if(pathname === '/api/navlist'){
+                    res.end(JSON.stringify({code:1,data:navList}));
                 }else{
                     pathname = pathname === '/' ? '/index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));

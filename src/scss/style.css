@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+.box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.box header {
+  width: 100%;
+  height: 6%;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+}
+
+.box header img {
+  width: 20px;
+  height: 20px;
+}
+
+.box header a {
+  flex: 1;
+  text-align: center;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+
+.box header a:nth-child(2) {
+  flex: 5;
+  background: #eee;
+  width: 100%;
+  height: 75%;
+  margin-top: 5px;
+  position: relative;
+}
+
+.box header a:nth-child(2) img {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+.box header a:nth-child(2) input {
+  display: block;
+  background: #eee;
+  line-height: 100%;
+  margin-left: 40px;
+}
+
+.box footer {
+  width: 100%;
+  height: 5%;
+  border-top: 1px solid #ccc;
+  display: flex;
+}
+
+.box footer dl {
+  flex: 1;
+  text-align: center;
+  padding: 3px 0;
+}
+
+.box footer dl dt {
+  width: 100%;
+  height: 70%;
+}
+
+.box footer dl dt img {
+  width: 20px;
+  height: 20px;
+}
+
+.box footer dl dd {
+  width: 100%;
+  height: 30%;
+}
+
+.wrap {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  overflow: hidden;
+}
+
+.left {
+  width: 80px;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: #eee;
+}
+
+.left ul li {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0.4rem 0;
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+
+.left ul li.active {
+  background: #fff;
+}
+
+.left ul li a {
+  display: inline-block;
+  width: 90%;
+  height: 30px;
+  padding: 5px 0;
+  line-height: 30px;
+}
+
+.left ul li a.active {
+  color: red;
+  border-left: 2px solid red;
+  padding: 0.4rem 0;
+}
+
+.right {
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.right > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.right > div dl {
+  width: 33.3%;
+  padding: 1rem 0;
+}
+
+.right > div dl dt {
+  width: 100%;
+}
+
+.right > div dl dt img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.right > div dl dd {
+  text-align: center;
+  font-size: 12px;
+}

@@ -3,6 +3,7 @@ require.config({
     paths:{
         'jquery':'./libs/jquery-3.2.1.min',
         'index':'./app/index',
+        'render':'./common/render',
         'handlebars':'./libs/handlebars-v4.0.11'
     }
 })

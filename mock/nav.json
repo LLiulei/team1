@@ -1,0 +1,17 @@
+{
+    "navList":[
+        {
+            "title":"正在流行",
+            "class":"active"
+        },
+        {
+            "title":"上衣"
+        },
+        {
+            "title":"裤子"
+        },
+        {
+            "title":"裙子"
+        }
+    ]
+}
