@@ -17,12 +17,15 @@ gulp.task('server',['devCss'],function(){
                 if(pathname === '/favicon.ico'){
                     return false;
                 }
-                if(pathname === '/api/classify'){
-                    var key = url.parse(req.url,true).query.key;
+                if(pathname === '/api/data'){
                     var target = data.data.filter(function(item){
                         return item.title === key;
                     });
-                    res.end(JSON.stringify({code:1,data:target}));
+                    res.end(JSON.stringify(target));
+                }else if(pathname === '/api/list'){
+                    var target = data.filter(function(item){
+                        return MediaQueryList.id === item.choose;
+                    })
                 }else{
                     pathname = pathname === '/' ? '/index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
